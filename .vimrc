@@ -4,6 +4,7 @@ Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tomasiser/vim-code-dark'
+Plug 'Valloric/YouCompleteMe'
 Plug 'sirver/ultisnips'
 Plug 'KeitaNakamura/tex-conceal.vim'
 call plug#end()
@@ -31,8 +32,8 @@ set expandtab
 autocmd filetype tex highlight MatchParen ctermbg=8
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : 'build',
-            \}
+            \ 'build_dir': 'build',
+            \ }
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -42,3 +43,17 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
+
+" YouCompleteMe
+let g:ycm_filetype_whitelist = {
+            \ "c": 1,
+            \ "cpp": 1,
+            \ "objc": 1,
+            \ "sh": 1,
+            \ "zsh": 1,
+            \ "zimbu": 1,
+            \ "python": 1,
+            \ }
+set previewpopup=height:10,width:60,highlight:PMenuSbar
+set completeopt+=popup
+set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
