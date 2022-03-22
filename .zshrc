@@ -4,30 +4,28 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-setopt histignorealldups sharehistory
-unsetopt BEEP
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
-# Alias definitions
-if [[ -f ~/.zsh_aliases ]]; then
-    . ~/.zsh_aliases
-fi
-
-set -o vi
-VISUAL="vim"
-EDITOR="$VISUAL"
-
-export LS_COLORS=$LS_COLORS:"ow=1;34:"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+_comp_options+=(globdots) # Include hidden files.
+
+# Vim-like key-bindings
+set -o vi
+bindkey -v '^?' backward-delete-char
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+unsetopt BEEP
+export LS_COLORS=$LS_COLORS:"ow=1;34:"
+
+[ -f ~/.aliases.zsh ] && source ~/.aliases.zsh
+[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
