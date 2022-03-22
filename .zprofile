@@ -4,6 +4,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
+export LS_COLORS=$LS_COLORS:"ow=1;34:"
 
 export HISTSIZE=2000
 export SAVEHIST=2000

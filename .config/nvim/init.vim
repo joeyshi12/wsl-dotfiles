@@ -9,22 +9,32 @@ set encoding=utf-8
 set linebreak
 set number
 set splitbelow splitright
-set ph=15
-set signcolumn=yes
+set pumheight=15
 set synmaxcol=200
+"set signcolumn=yes
 
-" Formatting
+" Indenting
+set indentexpr="" " disable auto-inserting tabs
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
 set autoindent
 set smartindent
+set cindent
 
 " Mappings
-cmap w!! w !sudo tee %
-map <C-n> :tabn<CR>
-map <C-p> :tabp<CR>
-map <F5>  :set spell!<CR>
-map <C-\> :NERDTreeToggle<CR>
-imap <C-\> <ESC>:NERDTreeToggle<CR>
+nmap <C-n> :tabn<CR>
+nmap <C-p> :tabp<CR>
+
+" Autocommands
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+augroup TRIM_WHITESPACE
+  autocmd!
+  autocmd BufWritePre * :call TrimWhitespace()
+augroup END
