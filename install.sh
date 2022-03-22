@@ -7,6 +7,7 @@ dotfiles=(
     ".config/nvim"
     ".config/ranger"
     ".config/tmux"
+    ".config/neofetch"
     ".zprofile"
     ".zshrc"
     ".aliases.zsh"
