@@ -21,6 +21,12 @@ alias ta='tmux attach-session'
 alias tl='tmux list-sessions'
 alias tk='tmux kill-session'
 
+# Runs fzf and opens chosen file in nvim
+se() {
+    local file=$(fzf --preview 'cat {}')
+    nvim $file
+}
+
 # Runs ranger and changes user to current ranger directory on quit
 r() {
     local target=~/.cache/ranger/rangerdir
@@ -33,7 +39,7 @@ r() {
 tarzip() {
     if [ -d "$1" ]; then
         file_name="$(basename $1).tar.gz"
-        tar -czvf $file_name $1 
+        tar -czvf $file_name $1
     else
         echo Error: cannot find directory at $1
     fi
