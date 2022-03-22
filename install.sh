@@ -6,7 +6,7 @@ dir="$HOME/dotfiles"
 dotfiles=(
     ".config/nvim"
     ".config/ranger"
-    ".config/tmux"
+    ".tmux.conf"
     ".config/neofetch"
     ".zprofile"
     ".zshrc"
