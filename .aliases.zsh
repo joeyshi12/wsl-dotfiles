@@ -1,4 +1,5 @@
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias v='nvim'
 alias sv='sudo -E vim'
 
@@ -8,6 +9,7 @@ alias gb='git branch'
 alias gc='git commit -v'
 alias gcl='git clone --recurse-submodules'
 alias gl='git pull'
+alias gup='git pull --rebase'
 alias gp='git push'
 alias gf='git fetch'
 alias gco='git checkout'
@@ -41,7 +43,7 @@ tarzip() {
         file_name="$(basename $1).tar.gz"
         tar -czvf $file_name $1
     else
-        echo Error: cannot find directory at $1
+        echo "Error: cannot find directory at $1"
     fi
 }
 
