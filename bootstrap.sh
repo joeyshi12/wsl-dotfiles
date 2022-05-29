@@ -11,7 +11,6 @@ dotfiles=(
     ".config/neofetch"
     ".zprofile"
     ".zshrc"
-    ".aliases.zsh"
     ".zlogout"
 )
 
