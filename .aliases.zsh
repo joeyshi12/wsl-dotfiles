@@ -26,7 +26,7 @@ alias tk='tmux kill-session'
 # Runs fzf and opens chosen file in nvim
 se() {
     local file=$(fzf --preview 'cat {}')
-    nvim $file
+    [ -f "$file" ] && nvim "$file"
 }
 
 # Runs ranger and changes user to current ranger directory on quit
